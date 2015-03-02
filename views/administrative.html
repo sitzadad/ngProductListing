@@ -1,0 +1,13 @@
+<i class="fa fa-reply" ng-click="adminCtrl.routeTo('/')"></i>
+<ul id='adminUl'>
+  <li class="block" ng-repeat="product in adminCtrl.products">
+    <img src="{{product.image}}" alt="">
+    <form ng-submit="adminCtrl.deleteProduct($index)">
+      <input class='nameInput' type="text" ng-model="product.name" value='{{product.name}}'/>
+      <input class='availabilityInput' type="text" ng-model="product.availability" value='{{product.availability}}'/>
+      <textarea class='descriptionInput' ng-model="product.description">{{product.description}}</textarea>
+      <input class='priceInput' type="text"  ng-model="product.price" value='{{product.price}}'/>
+      <button type='submit' class='deleteProductButton'>Delete Product</button>
+    </form>
+  </li>
+</ul>

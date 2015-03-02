@@ -1,0 +1,14 @@
+<i class="fa fa-plus" ng-click="custCtrl.routeTo('/addNew')"></i>
+<i class="fa fa-pencil-square-o" ng-click="custCtrl.routeTo('/administrative')"></i>
+<ul id='custUl'>
+  <li class="block" ng-repeat="product in custCtrl.products">
+    <img src="{{product.image}}" alt="">
+    <form>
+      <input class='nameInput' type="text" value='{{product.name}}' disabled='disabled'/>
+      <input class='availabilityInput' type="text" value='{{product.availability}}' disabled='disabled'/>
+      <textarea class='descriptionInput' disabled='disabled'>{{product.description}}</textarea>
+      <input class='priceInput' type="text" value='{{product.price}}' disabled='disabled'/>
+      <button class='addCartButton'>Add to Cart</button>
+    </form>
+  </li>
+</ul>

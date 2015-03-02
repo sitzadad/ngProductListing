@@ -1,0 +1,152 @@
+@import "bower_components/bourbon/app/assets/stylesheets/_bourbon";
+@import "bower_components/neat/app/assets/stylesheets/_neat";
+
+.fa.fa-pencil-square-o{
+  position:fixed;
+  top:10px;
+  right:10px;
+  font-size:2em;
+  color:#ec971f;
+  &:hover{
+    transform:scale(1.1,1.1);
+    cursor:pointer;
+  }
+}
+.fa.fa-plus{
+  position:fixed;
+  top:10px;
+  right:50px;
+  font-size:2em;
+  color:#5cb85c;
+  &:hover{
+    transform:scale(1.1,1.1);
+    cursor:pointer;
+  }
+}
+.fa.fa-reply{
+  position:fixed;
+  top:10px;
+  right:30px;
+  font-size:2em;
+  color:#286090;
+  &:hover{
+    transform:scale(1.1,1.1);
+    cursor:pointer;
+  }
+}
+ul{
+  @include outer-container();
+  padding:0;
+}
+.block{
+  @include span-columns(12);
+  @include omega();
+  position:relative;
+  margin-bottom:50px;
+}
+#addForm{
+  display:block;
+  margin:auto;
+  width:50%;
+  input,textarea{
+    display:block;
+    margin:1em auto;
+    width:100%;
+  }
+  textarea{
+    border-color:lightgrey;
+    resize:none;
+    height:150px;
+  }
+}
+img{
+ width:250px;
+ height:250px;
+ margin-right:20px;
+}
+form{
+ display:inline-block;
+ vertical-align:top;
+
+}
+
+legend{
+  font-size:2em;
+  font-family:Helvetica;
+}
+#custUl{
+  input, textarea{
+    border:none;
+    resize:none;
+  }
+}
+#adminUl{
+  textarea{
+    resize:none;
+    border-color:lightgrey;
+  }
+}
+.nameInput{
+  font-size:2em;
+  display:block;
+  font-weight:bold;
+  width:600px;
+}
+.availabilityInput{
+  display:block;
+  margin:1em 0;
+}
+.descriptionInput{
+  font-size:1.1em;
+  width:600px;
+  height:150px;
+}
+.priceInput{
+  position:absolute;
+  top:20px;
+  right:0;
+  font-size:1.1em;
+  width:123px;
+}
+.addCartButton{
+  background-color:#286090;
+  padding:10px 15px;
+  color:white;
+  border:none;
+  border-radius:1em;
+  font-size:1.1em;
+  position:absolute;
+  right:0;
+  top:60px;
+  &:hover{
+    transform:scale(1.1,1.1);
+    cursor:pointer;
+  }
+}
+.deleteProductButton{
+  background-color:#d9534f;
+  padding:10px 15px;
+  color:white;
+  border:none;
+  border-radius:1em;
+  font-size:1.1em;
+  position:absolute;
+  right:0;
+  top:60px;
+  &:hover{
+    transform:scale(1.1,1.1);
+    cursor:pointer;
+  }
+}
+#saveNewListingButton{
+  background-color:#286090;
+  padding:10px 15px;
+  color:white;
+  border:none;
+  border-radius:1em;
+  font-size:1.1em;
+  &:hover{
+    transform:scale(1.1,1.1);
+    cursor:pointer;
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "ngProductListing",
+  "version": "0.0.0",
+  "authors": [
+    "Adam <sitzadad@yahoo.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "~1.3.14",
+    "angular": "~1.3.14",
+    "bower": "*",
+    "neat": "~1.7.1",
+    "font-awesome": "~4.3.0"
+  }
+}

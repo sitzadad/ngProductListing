@@ -1,0 +1,155 @@
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit; }
+
+.fa.fa-pencil-square-o {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-size: 2em;
+  color: #ec971f; }
+  .fa.fa-pencil-square-o:hover {
+    transform: scale(1.1, 1.1);
+    cursor: pointer; }
+
+.fa.fa-plus {
+  position: fixed;
+  top: 10px;
+  right: 50px;
+  font-size: 2em;
+  color: #5cb85c; }
+  .fa.fa-plus:hover {
+    transform: scale(1.1, 1.1);
+    cursor: pointer; }
+
+.fa.fa-reply {
+  position: fixed;
+  top: 10px;
+  right: 30px;
+  font-size: 2em;
+  color: #286090; }
+  .fa.fa-reply:hover {
+    transform: scale(1.1, 1.1);
+    cursor: pointer; }
+
+ul {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0; }
+  ul::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+.block {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%;
+  margin-right: 0;
+  position: relative;
+  margin-bottom: 50px; }
+  .block:last-child {
+    margin-right: 0; }
+
+#addForm {
+  display: block;
+  margin: auto;
+  width: 50%; }
+  #addForm input, #addForm textarea {
+    display: block;
+    margin: 1em auto;
+    width: 100%; }
+  #addForm textarea {
+    border-color: lightgrey;
+    resize: none;
+    height: 150px; }
+
+img {
+  width: 250px;
+  height: 250px;
+  margin-right: 20px; }
+
+form {
+  display: inline-block;
+  vertical-align: top; }
+
+legend {
+  font-size: 2em;
+  font-family: Helvetica; }
+
+#custUl input, #custUl textarea {
+  border: none;
+  resize: none; }
+
+#adminUl textarea {
+  resize: none;
+  border-color: lightgrey; }
+
+.nameInput {
+  font-size: 2em;
+  display: block;
+  font-weight: bold;
+  width: 600px; }
+
+.availabilityInput {
+  display: block;
+  margin: 1em 0; }
+
+.descriptionInput {
+  font-size: 1.1em;
+  width: 600px;
+  height: 150px; }
+
+.priceInput {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  font-size: 1.1em;
+  width: 123px; }
+
+.addCartButton {
+  background-color: #286090;
+  padding: 10px 15px;
+  color: white;
+  border: none;
+  border-radius: 1em;
+  font-size: 1.1em;
+  position: absolute;
+  right: 0;
+  top: 60px; }
+  .addCartButton:hover {
+    transform: scale(1.1, 1.1);
+    cursor: pointer; }
+
+.deleteProductButton {
+  background-color: #d9534f;
+  padding: 10px 15px;
+  color: white;
+  border: none;
+  border-radius: 1em;
+  font-size: 1.1em;
+  position: absolute;
+  right: 0;
+  top: 60px; }
+  .deleteProductButton:hover {
+    transform: scale(1.1, 1.1);
+    cursor: pointer; }
+
+#saveNewListingButton {
+  background-color: #286090;
+  padding: 10px 15px;
+  color: white;
+  border: none;
+  border-radius: 1em;
+  font-size: 1.1em; }
+  #saveNewListingButton:hover {
+    transform: scale(1.1, 1.1);
+    cursor: pointer; }

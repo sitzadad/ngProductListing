@@ -1,0 +1,10 @@
+<i class="fa fa-reply" ng-click="addCtrl.routeTo('/')"></i>
+<form id='addForm' ng-submit="addCtrl.addProduct(newProduct)">
+  <legend>Add New Product Listing</legend>
+  <input type="text" ng-model="newProduct.name" placeholder="Name">
+  <input type="text" ng-model="newProduct.image" placeholder="Image URL">
+  <input type="text" ng-model="newProduct.availability" placeholder="Availability">
+  <textarea ng-model="newProduct.description" placeholder="Description"></textarea>
+  <input type="text" ng-model="newProduct.price" placeholder="Price">
+  <button type="submit" id='saveNewListingButton'>Save New Listing</button>
+</form>
