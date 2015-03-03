@@ -1,0 +1,10 @@
+<i class="fa fa-reply" ng-click="cartCtrl.routeTo('/')"></i>
+<ul id="cart">
+  <h1>Shopping Cart</h1>
+  <li class='block' ng-repeat="item in cartCtrl.cart">
+    <span>{{item.name}} | {{item.availability}} | {{item.price}} | Quantity: {{item.quantity}} </span>
+    <i class="fa fa-plus cart" ng-click="cartCtrl.plusQuantity(item)"></i>
+    <i class="fa fa-minus cart" ng-click="cartCtrl.minusQuantity(item)"></i>
+    <i class="fa fa-times cart" ng-click="cartCtrl.deleteFromCart($index)"></i>
+  </li>
+</ul>

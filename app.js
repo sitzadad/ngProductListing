@@ -22,6 +22,10 @@
         templateUrl: 'views/addNew.html',
         controller: 'AdditionController as addCtrl'
       })
+      .when('/cart', {
+        templateUrl: 'views/cart.html',
+        controller: 'CartController as cartCtrl'
+      })
       .otherwise({
         redirectTo: 'views/404.html'
       });

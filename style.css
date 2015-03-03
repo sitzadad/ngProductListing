@@ -8,9 +8,19 @@ html {
   -moz-box-sizing: inherit;
   box-sizing: inherit; }
 
-.fa.fa-pencil-square-o {
+.fa.fa-shopping-cart {
   position: fixed;
   top: 10px;
+  right: 20px;
+  font-size: 2em;
+  color: #5bc0de; }
+  .fa.fa-shopping-cart:hover {
+    transform: scale(1.1, 1.1);
+    cursor: pointer; }
+
+.fa.fa-pencil-square-o {
+  position: fixed;
+  bottom: 20px;
   right: 10px;
   font-size: 2em;
   color: #ec971f; }
@@ -18,25 +28,49 @@ html {
     transform: scale(1.1, 1.1);
     cursor: pointer; }
 
-.fa.fa-plus {
+.fa.fa-plus.admin {
   position: fixed;
-  top: 10px;
+  bottom: 20px;
   right: 50px;
   font-size: 2em;
   color: #5cb85c; }
-  .fa.fa-plus:hover {
+  .fa.fa-plus.admin:hover {
     transform: scale(1.1, 1.1);
     cursor: pointer; }
 
 .fa.fa-reply {
   position: fixed;
   top: 10px;
-  right: 30px;
+  right: 20px;
   font-size: 2em;
   color: #286090; }
   .fa.fa-reply:hover {
     transform: scale(1.1, 1.1);
     cursor: pointer; }
+
+.fa.fa-times.cart {
+  font-size: 1.5em;
+  color: #d9534f; }
+  .fa.fa-times.cart:hover {
+    transform: scale(1.1, 1.1);
+    cursor: pointer; }
+
+.fa.fa-plus.cart {
+  font-size: 1.5em;
+  color: #286090; }
+  .fa.fa-plus.cart:hover {
+    transform: scale(1.1, 1.1);
+    cursor: pointer; }
+
+.fa.fa-minus.cart {
+  font-size: 1.5em;
+  color: #286090; }
+  .fa.fa-minus.cart:hover {
+    transform: scale(1.1, 1.1);
+    cursor: pointer; }
+
+#cart span {
+  font-size: 1.5em; }
 
 ul {
   max-width: 68em;

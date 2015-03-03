@@ -42,10 +42,60 @@
       var deleteProduct = function (index) {
         products.splice(index,1);
       };
+
+      var cart = [];
+
+      var getCart = function () {
+        return cart;
+      };
+      var getCartLength = function () {
+        if(cart.length > 0){
+          return cart.length;
+        }
+
+      };
+      var addToCart = function (product) {
+        var foo = false;
+        if(cart.length === 0){
+          product.quantity = 1;
+          cart.push(product);
+        }else{
+          for(var i=0;i<cart.length;i++){
+            if(product.name === cart[i].name){
+              product.quantity = product.quantity + 1;
+              break;
+            }else if(i === cart.length -1){
+              product.quantity = 0;
+              cart.push(product);
+            }
+          }
+        }
+      };
+      var deleteFromCart = function (index) {
+        cart.splice(index,1);
+      };
+
+      var plusQuantity = function (passedItem) {
+        passedItem.quantity = passedItem.quantity + 1;
+      };
+
+      var minusQuantity = function (passedItem) {
+        if(passedItem.quantity > 1){
+          passedItem.quantity = passedItem.quantity - 1;
+        }
+
+      };
+
       return {
         getProducts: getProducts,
         addProduct: addProduct,
-        deleteProduct: deleteProduct
+        deleteProduct: deleteProduct,
+        getCart: getCart,
+        getCartLength: getCartLength,
+        addToCart: addToCart,
+        deleteFromCart: deleteFromCart,
+        plusQuantity: plusQuantity,
+        minusQuantity: minusQuantity
       };
     });
 

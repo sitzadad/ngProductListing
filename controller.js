@@ -5,6 +5,14 @@
 
         custCtrl.products = ProductsService.getProducts();
 
+        custCtrl.cart = ProductsService.getCart();
+
+        custCtrl.getCartLength = ProductsService.getCartLength();
+
+        custCtrl.addToCart = function (passed) {
+          ProductsService.addToCart(passed);
+        };
+
         custCtrl.routeTo = function (path) {
           $location.path(path);
         };
@@ -37,6 +45,28 @@
           $scope.newProduct = {};
         };
         addCtrl.routeTo = function (path) {
+          $location.path(path);
+        };
+
+  });
+  angular.module('productListing').controller('CartController', function (ProductsService, $scope, $location) {
+        var cartCtrl = this;
+
+        cartCtrl.cart = ProductsService.getCart();
+
+        cartCtrl.deleteFromCart = function (index) {
+          ProductsService.deleteFromCart(index);
+        };
+
+        cartCtrl.plusQuantity = function (passedItem) {
+          ProductsService.plusQuantity(passedItem);
+        };
+
+        cartCtrl.minusQuantity = function (passedItem) {
+          ProductsService.minusQuantity(passedItem);
+        };
+
+        cartCtrl.routeTo = function (path) {
           $location.path(path);
         };
 
