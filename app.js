@@ -1,26 +1,31 @@
 (function () {
   "use strict";
 
-  angular.module('productListing', [
+  angular.module('ngProductListing', [
     'ngRoute'
   ])
+
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/customer.html',
-        controller: 'CustomerController as custCtrl'
+        templateUrl: 'views/products.html',
+        controller: 'MainController as mainCtrl'
       })
-      .when('/customer', {
-        templateUrl: 'views/customer.html',
-        controller: 'CustomerController as custCtrl'
+      .when('/products', {
+        templateUrl: 'views/products.html',
+        controller: 'MainController as mainCtrl'
       })
-      .when('/administrative', {
-        templateUrl: 'views/administrative.html',
-        controller: 'AdministrativeController as adminCtrl'
+      .when('/detail/:productIndex', {
+        templateUrl: 'views/detail.html',
+        controller: 'MainController as mainCtrl'
+      })
+      .when('/admin', {
+        templateUrl: 'views/admin.html',
+        controller: 'AdminController as adminCtrl'
       })
       .when('/addNew', {
         templateUrl: 'views/addNew.html',
-        controller: 'AdditionController as addCtrl'
+        controller: 'AdminController as adminCtrl'
       })
       .when('/cart', {
         templateUrl: 'views/cart.html',
@@ -29,8 +34,8 @@
       .otherwise({
         redirectTo: 'views/404.html'
       });
-  });
+  })
 
-
+  .constant('_', _);
 
 })();

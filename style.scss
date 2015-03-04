@@ -1,79 +1,63 @@
 @import "bower_components/bourbon/app/assets/stylesheets/_bourbon";
 @import "bower_components/neat/app/assets/stylesheets/_neat";
 
-
-.fa.fa-shopping-cart{
+.iconClass{
   position:fixed;
-  top:10px;
-  right:20px;
   font-size:2em;
-  color:#5bc0de;
+}
+.hoverClass{
   &:hover{
     transform:scale(1.1,1.1);
     cursor:pointer;
   }
+}
+.fa.fa-shopping-cart{
+  @extend .iconClass;
+  @extend .hoverClass;
+  top:10px;
+  right:20px;
+  color:#5bc0de;
 }
 .fa.fa-pencil-square-o{
-  position:fixed;
+  @extend .iconClass;
+  @extend .hoverClass;
   bottom:20px;
   right:10px;
-  font-size:2em;
   color:#ec971f;
-  &:hover{
-    transform:scale(1.1,1.1);
-    cursor:pointer;
-  }
 }
 .fa.fa-plus.admin{
-  position:fixed;
+  @extend .iconClass;
+  @extend .hoverClass;
   bottom:20px;
   right:50px;
-  font-size:2em;
   color:#5cb85c;
-  &:hover{
-    transform:scale(1.1,1.1);
-    cursor:pointer;
-  }
 }
 .fa.fa-reply{
-  position:fixed;
+  @extend .iconClass;
+  @extend .hoverClass;
   top:10px;
   right:20px;
-  font-size:2em;
   color:#286090;
-  &:hover{
-    transform:scale(1.1,1.1);
-    cursor:pointer;
-  }
 }
 .fa.fa-times.cart{
-  font-size:1.5em;
   color:#d9534f;
-  &:hover{
-    transform:scale(1.1,1.1);
-    cursor:pointer;
-  }
+  @extend .hoverClass;
 }
 .fa.fa-plus.cart{
-  font-size:1.5em;
   color:#286090;
-  &:hover{
-    transform:scale(1.1,1.1);
-    cursor:pointer;
-  }
+  @extend .hoverClass;
 }
 .fa.fa-minus.cart{
-  font-size:1.5em;
   color:#286090;
-  &:hover{
-    transform:scale(1.1,1.1);
-    cursor:pointer;
-  }
+  @extend .hoverClass;
 }
 #cart{
   span{
     font-size:1.5em;
   }
+}
+#cartTotal{
+  text-align:right;
 }
 ul{
   @include outer-container();
@@ -81,10 +65,13 @@ ul{
 }
 
 .block{
-  @include span-columns(12);
+  @include span-columns(6);
   @include omega();
   position:relative;
-  margin-bottom:50px;
+  margin-bottom:150px;
+}
+li{
+  list-style-type:none;
 }
 #addForm{
   display:block;
@@ -116,10 +103,13 @@ legend{
   font-size:2em;
   font-family:Helvetica;
 }
-#custUl{
+#mainUl{
   input, textarea{
     border:none;
     resize:none;
+  }
+  img,.nameInput{
+    cursor:pointer;
   }
 }
 #adminUl{
@@ -132,23 +122,25 @@ legend{
   font-size:2em;
   display:block;
   font-weight:bold;
-  width:600px;
+  width:100%;
+  margin:9px 0;
 }
-.availabilityInput{
+.imageInput{
+  font-size:1.1em;
   display:block;
-  margin:1em 0;
+  width:100%;
 }
 .descriptionInput{
   font-size:1.1em;
-  width:600px;
-  height:150px;
+  width:100%;
+  height:75px;
+  margin-bottom:1em;
 }
 .priceInput{
-  position:absolute;
-  top:20px;
-  right:0;
+  display:block;
   font-size:1.1em;
-  width:123px;
+  margin:9px 0;
+  width:100%;
 }
 .addCartButton{
   background-color:#286090;
@@ -158,27 +150,30 @@ legend{
   border-radius:1em;
   font-size:1.1em;
   position:absolute;
-  right:0;
-  top:60px;
-  &:hover{
-    transform:scale(1.1,1.1);
-    cursor:pointer;
-  }
+  left:0;
+  bottom:0;
+  @extend .hoverClass;
 }
-.deleteProductButton{
-  background-color:#d9534f;
-  padding:10px 15px;
+.editProductButton{
+  background-color:#286090;
+  padding:10px 0;
+  margin-right:9%;
+  width:45%;
   color:white;
   border:none;
   border-radius:1em;
   font-size:1.1em;
-  position:absolute;
-  right:0;
-  top:60px;
-  &:hover{
-    transform:scale(1.1,1.1);
-    cursor:pointer;
-  }
+  @extend .hoverClass;
+}
+.deleteProductButton{
+  background-color:#d9534f;
+  padding:10px 0;
+  width:45%;
+  color:white;
+  border:none;
+  border-radius:1em;
+  font-size:1.1em;
+  @extend .hoverClass;
 }
 #saveNewListingButton{
   background-color:#286090;
@@ -187,8 +182,5 @@ legend{
   border:none;
   border-radius:1em;
   font-size:1.1em;
-  &:hover{
-    transform:scale(1.1,1.1);
-    cursor:pointer;
-  }
+  @extend .hoverClass;
 }

@@ -8,69 +8,48 @@ html {
   -moz-box-sizing: inherit;
   box-sizing: inherit; }
 
-.fa.fa-shopping-cart {
+.iconClass, .fa.fa-shopping-cart, .fa.fa-pencil-square-o, .fa.fa-plus.admin, .fa.fa-reply {
   position: fixed;
+  font-size: 2em; }
+
+.hoverClass:hover, .fa.fa-shopping-cart:hover, .fa.fa-pencil-square-o:hover, .fa.fa-plus.admin:hover, .fa.fa-reply:hover, .fa.fa-times.cart:hover, .fa.fa-plus.cart:hover, .fa.fa-minus.cart:hover, .addCartButton:hover, .editProductButton:hover, .deleteProductButton:hover, #saveNewListingButton:hover {
+  transform: scale(1.1, 1.1);
+  cursor: pointer; }
+
+.fa.fa-shopping-cart {
   top: 10px;
   right: 20px;
-  font-size: 2em;
   color: #5bc0de; }
-  .fa.fa-shopping-cart:hover {
-    transform: scale(1.1, 1.1);
-    cursor: pointer; }
 
 .fa.fa-pencil-square-o {
-  position: fixed;
   bottom: 20px;
   right: 10px;
-  font-size: 2em;
   color: #ec971f; }
-  .fa.fa-pencil-square-o:hover {
-    transform: scale(1.1, 1.1);
-    cursor: pointer; }
 
 .fa.fa-plus.admin {
-  position: fixed;
   bottom: 20px;
   right: 50px;
-  font-size: 2em;
   color: #5cb85c; }
-  .fa.fa-plus.admin:hover {
-    transform: scale(1.1, 1.1);
-    cursor: pointer; }
 
 .fa.fa-reply {
-  position: fixed;
   top: 10px;
   right: 20px;
-  font-size: 2em;
   color: #286090; }
-  .fa.fa-reply:hover {
-    transform: scale(1.1, 1.1);
-    cursor: pointer; }
 
 .fa.fa-times.cart {
-  font-size: 1.5em;
   color: #d9534f; }
-  .fa.fa-times.cart:hover {
-    transform: scale(1.1, 1.1);
-    cursor: pointer; }
 
 .fa.fa-plus.cart {
-  font-size: 1.5em;
   color: #286090; }
-  .fa.fa-plus.cart:hover {
-    transform: scale(1.1, 1.1);
-    cursor: pointer; }
 
 .fa.fa-minus.cart {
-  font-size: 1.5em;
   color: #286090; }
-  .fa.fa-minus.cart:hover {
-    transform: scale(1.1, 1.1);
-    cursor: pointer; }
 
 #cart span {
   font-size: 1.5em; }
+
+#cartTotal {
+  text-align: right; }
 
 ul {
   max-width: 68em;
@@ -86,12 +65,15 @@ ul {
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 100%;
+  width: 48.82117%;
   margin-right: 0;
   position: relative;
-  margin-bottom: 50px; }
+  margin-bottom: 150px; }
   .block:last-child {
     margin-right: 0; }
+
+li {
+  list-style-type: none; }
 
 #addForm {
   display: block;
@@ -119,9 +101,11 @@ legend {
   font-size: 2em;
   font-family: Helvetica; }
 
-#custUl input, #custUl textarea {
+#mainUl input, #mainUl textarea {
   border: none;
   resize: none; }
+#mainUl img, #mainUl .nameInput {
+  cursor: pointer; }
 
 #adminUl textarea {
   resize: none;
@@ -131,23 +115,25 @@ legend {
   font-size: 2em;
   display: block;
   font-weight: bold;
-  width: 600px; }
+  width: 100%;
+  margin: 9px 0; }
 
-.availabilityInput {
+.imageInput {
+  font-size: 1.1em;
   display: block;
-  margin: 1em 0; }
+  width: 100%; }
 
 .descriptionInput {
   font-size: 1.1em;
-  width: 600px;
-  height: 150px; }
+  width: 100%;
+  height: 75px;
+  margin-bottom: 1em; }
 
 .priceInput {
-  position: absolute;
-  top: 20px;
-  right: 0;
+  display: block;
   font-size: 1.1em;
-  width: 123px; }
+  margin: 9px 0;
+  width: 100%; }
 
 .addCartButton {
   background-color: #286090;
@@ -157,25 +143,27 @@ legend {
   border-radius: 1em;
   font-size: 1.1em;
   position: absolute;
-  right: 0;
-  top: 60px; }
-  .addCartButton:hover {
-    transform: scale(1.1, 1.1);
-    cursor: pointer; }
+  left: 0;
+  bottom: 0; }
 
-.deleteProductButton {
-  background-color: #d9534f;
-  padding: 10px 15px;
+.editProductButton {
+  background-color: #286090;
+  padding: 10px 0;
+  margin-right: 9%;
+  width: 45%;
   color: white;
   border: none;
   border-radius: 1em;
-  font-size: 1.1em;
-  position: absolute;
-  right: 0;
-  top: 60px; }
-  .deleteProductButton:hover {
-    transform: scale(1.1, 1.1);
-    cursor: pointer; }
+  font-size: 1.1em; }
+
+.deleteProductButton {
+  background-color: #d9534f;
+  padding: 10px 0;
+  width: 45%;
+  color: white;
+  border: none;
+  border-radius: 1em;
+  font-size: 1.1em; }
 
 #saveNewListingButton {
   background-color: #286090;
@@ -184,6 +172,3 @@ legend {
   border: none;
   border-radius: 1em;
   font-size: 1.1em; }
-  #saveNewListingButton:hover {
-    transform: scale(1.1, 1.1);
-    cursor: pointer; }

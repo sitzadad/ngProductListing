@@ -1,0 +1,11 @@
+<i class="fa fa-reply" ng-click="mainCtrl.routeTo('/')"></i>
+<ul id='mainUl'>
+  <li class="block">
+    <img src="{{mainCtrl.selectedProduct.image}}" alt="">
+    <form>
+      <input class='nameInput' type="text" value='{{mainCtrl.selectedProduct.name}}' disabled='disabled'/>
+      <input class='priceInput' type="text" value='{{mainCtrl.selectedProduct.price | currency}}' disabled='disabled'/>
+      <textarea class='descriptionInput' disabled='disabled'>{{mainCtrl.selectedProduct.description}}</textarea>
+    </form>
+  </li>
+</ul>

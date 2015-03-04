@@ -1,74 +1,86 @@
 (function () {
   "use strict";
-  angular.module('productListing').controller('CustomerController', function (ProductsService, $location) {
-        var custCtrl = this;
+  angular.module('ngProductListing').controller('MainController', function (ProductsService, CartService, $routeParams, $location) {
 
-        custCtrl.products = ProductsService.getProducts();
+    var mainCtrl = this;
 
-        custCtrl.cart = ProductsService.getCart();
+    ProductsService.getProducts().success(function(data){
+      mainCtrl.products = data.reverse();
+      
+    })
+    .error(function(){
+      console.log('mainCtrl.products error')
+    });
 
-        custCtrl.getCartLength = ProductsService.getCartLength();
+    mainCtrl.selectedProduct = ProductsService.getOneProduct($routeParams.productIndex);
 
-        custCtrl.addToCart = function (passed) {
-          ProductsService.addToCart(passed);
-        };
+    mainCtrl.cart = CartService.getCart();
 
-        custCtrl.routeTo = function (path) {
-          $location.path(path);
-        };
+    mainCtrl.cartCount = function () {
+      return CartService.getCartCount();
+    };
 
-  });
-  angular.module('productListing').controller('AdministrativeController', function (ProductsService, $scope, $location) {
-        var adminCtrl = this;
-
-        adminCtrl.products = ProductsService.getProducts();
-
-        adminCtrl.editProduct = function (editedProduct) {
-          ProductsService.editProduct(editedProduct);
-        };
-
-        adminCtrl.deleteProduct = function (passed) {
-          ProductsService.deleteProduct(passed);
-        };
-        adminCtrl.routeTo = function (path) {
-          $location.path(path);
-        };
+    mainCtrl.routeTo = function (path) {
+      $location.path(path);
+    };
 
   });
-  angular.module('productListing').controller('AdditionController', function (ProductsService, $scope, $location) {
-        var addCtrl = this;
+  angular.module('ngProductListing').controller('AdminController', function (ProductsService, $scope, $location) {
 
-        addCtrl.products = ProductsService.getProducts();
+    var adminCtrl = this;
 
-        addCtrl.addProduct = function (newProduct) {
-          ProductsService.addProduct(newProduct);
-          $scope.newProduct = {};
-        };
-        addCtrl.routeTo = function (path) {
-          $location.path(path);
-        };
+    ProductsService.getProducts().success(function(data){
+      adminCtrl.products = data.reverse();
+    })
+    .error(function(){
+      console.log('mainCtrl.products error')
+    });
+
+    adminCtrl.addProduct = function (newProduct) {
+      ProductsService.addProduct(newProduct);
+      $scope.newProduct = {};
+    };
+
+    adminCtrl.editProduct = function (editedProduct) {
+      ProductsService.editProduct(editedProduct);
+    };
+
+    adminCtrl.deleteProduct = function (passedId) {
+      ProductsService.deleteProduct(passedId);
+    };
 
   });
-  angular.module('productListing').controller('CartController', function (ProductsService, $scope, $location) {
-        var cartCtrl = this;
+  angular.module('ngProductListing').controller('CartController', function (CartService) {
 
-        cartCtrl.cart = ProductsService.getCart();
+    var cartCtrl = this;
 
-        cartCtrl.deleteFromCart = function (index) {
-          ProductsService.deleteFromCart(index);
-        };
+    cartCtrl.cart = CartService.getCart();
 
-        cartCtrl.plusQuantity = function (passedItem) {
-          ProductsService.plusQuantity(passedItem);
-        };
+    cartCtrl.getCartTotal = function () {
+      return CartService.getCartTotal();
+    };
 
-        cartCtrl.minusQuantity = function (passedItem) {
-          ProductsService.minusQuantity(passedItem);
-        };
+    cartCtrl.addToCart = function (passed) {
+      CartService.addToCart(passed);
+    };
 
-        cartCtrl.routeTo = function (path) {
-          $location.path(path);
-        };
+    cartCtrl.deleteFromCart = function (index) {
+      CartService.deleteFromCart(index);
+    };
+
+    cartCtrl.plusQuantity = function (passedItem) {
+      CartService.plusQuantity(passedItem);
+    };
+
+    cartCtrl.minusQuantity = function (passedItem) {
+      CartService.minusQuantity(passedItem);
+    };
+
+    cartCtrl.emptyCartMsg = function () {
+      if(CartService.getCart().length === 0){
+        return 'is empty.';
+      }
+    };
 
   });
 

@@ -1,0 +1,20 @@
+<div ng-controller="MainController as mainCtrl">
+  <i class="fa fa-reply" ng-click="mainCtrl.routeTo('/')"></i>
+  <ul id='adminUl'>
+    <li class="block" ng-repeat="product in adminCtrl.products" ng-hide="hideProduct">
+      <img src="{{product.image}}" alt="">
+      <form >
+        <input class='nameInput' type="text" ng-model="product.name" value='{{product.name}}' placeholder = "Product Name"/>
+        <input class='imageInput' type="text" ng-model="product.image" value='{{product.image}}' placeholder = "Image URL"/>
+        <input class='priceInput' type="text"  ng-model="product.price" value='{{product.price}}' placeholder = "Price"/>
+        <textarea class='descriptionInput' ng-model="product.description" placeholder = "Description" >{{product.description}}</textarea>
+        <button class='editProductButton' ng-click="adminCtrl.editProduct(product)">Save Edits</button>
+        <button type='submit' class='deleteProductButton' ng-click="hideProduct = !hideProduct; adminCtrl.deleteProduct(product._id)">Delete Product</button>
+      </form>
+    </li>
+  </ul>
+</div>
+placeholder="Product Name"
+placeholder="Image URL"
+placeholder="Description"
+placeholder="Price"

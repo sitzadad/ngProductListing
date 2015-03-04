@@ -1,59 +1,103 @@
 (function () {
   "use strict";
-  angular.module('productListing').factory('ProductsService', function ($location) {
+  angular.module('ngProductListing')
+
+    .factory('ProductsService', function ($location,$http) {
+
+      var url = 'http://tiy-fee-rest.herokuapp.com/collections/ngngng';
+
       var products = [
         {
           name: "Basic Toaster",
           image: "http://kitchen-electronics.weebly.com/uploads/2/7/1/1/27118291/6608936_orig.jpg",
-          price: "$1,000,000",
+          price: 1,
           description: "This toaster is pretty good at toasting.",
-          availability: "In-Stock"
         },
         {
           name: "Advanced Toaster",
           image: "http://st.houzz.com/simgs/7dd1de47010717b1_4-2319/contemporary-toasters.jpg",
-          price: "$5,000,000",
+          price: 20,
           description: "Toasts all the toast.",
-          availability: "In-Stock"
         },
         {
-          name: "Toaster - Dark Side Edition",
+          name: "Dark Side Toaster",
           image: "http://www.ohgizmo.com/wp-content/uploads/2008/11/dv-toaster.jpg",
-          price: "$10,000,000",
+          price: 35,
           description: "May the toast be with you.",
-          availability: "Back-Ordered"
         },
         {
           name: "Sunbeam Toaster",
           image: "http://img3.wikia.nocookie.net/__cb20120719202236/disney/images/8/8f/Toaster.jpg",
-          price: "priceless",
+          price: 500,
           description: "Brave little toaster.",
-          availability: "Out-Of-Stock"
         }
       ];
 
-      var getProducts = function () {
-        return products;
+      var getProducts = function (callback) {
+        return $http.get(url);
+
+        //ASK CALVIN ABOUT RETURNING PROMISE INSTEAD OF EXPECTED DATA
+        // .success(function(data){
+        //   return data;
+        // })
+        // .error(function(){
+        //   console.log('service/getProducts error');
+        // });
+        // return products;
       };
+
       var addProduct = function (product) {
-        products.push(product);
-        $location.path("/");
+        $http.post(url, product).success(function(){
+          $location.path("/");
+        })
+        .error(function(){
+          console.log('service/addProduct error');
+        });
       };
-      var deleteProduct = function (index) {
-        products.splice(index,1);
+
+      var deleteProduct = function (passedId) {
+        $http.delete(url + '/' + passedId).success(function(){
+
+        })
+        .error(function(){
+          console.log('service/deleteProduct error');
+        });
       };
+
+      var editProduct = function (editedProduct) {
+        $http.put(url + '/' + editedProduct._id, editedProduct);
+      };
+
+      var getOneProduct = function (index) {
+        return products[index];
+      };
+
+      return {
+        getProducts: getProducts,
+        addProduct: addProduct,
+        deleteProduct: deleteProduct,
+        editProduct: editProduct,
+        getOneProduct: getOneProduct
+      };
+
+    })
+
+    .factory('CartService', function ($location,_) {
 
       var cart = [];
 
       var getCart = function () {
         return cart;
       };
-      var getCartLength = function () {
-        if(cart.length > 0){
-          return cart.length;
-        }
 
+      var getCartTotal = function () {
+        var runningTotal = 0;
+        _.map(cart,function(eachObject){
+          runningTotal = runningTotal + (eachObject.quantity*eachObject.price);
+        });
+        return runningTotal;
       };
+
       var addToCart = function (product) {
         var foo = false;
         if(cart.length === 0){
@@ -63,7 +107,6 @@
           for(var i=0;i<cart.length;i++){
             if(product.name === cart[i].name){
               product.quantity = product.quantity + 1;
-              break;
             }else if(i === cart.length -1){
               product.quantity = 0;
               cart.push(product);
@@ -71,6 +114,7 @@
           }
         }
       };
+
       var deleteFromCart = function (index) {
         cart.splice(index,1);
       };
@@ -86,17 +130,23 @@
 
       };
 
+      var getCartCount = function () {
+        var cartQuantity = 0;
+        _.each(cart,function (eachProduct) {
+          cartQuantity = cartQuantity + eachProduct.quantity;
+        });
+        return cartQuantity;
+      };
+
       return {
-        getProducts: getProducts,
-        addProduct: addProduct,
-        deleteProduct: deleteProduct,
         getCart: getCart,
-        getCartLength: getCartLength,
+        getCartTotal: getCartTotal,
         addToCart: addToCart,
         deleteFromCart: deleteFromCart,
         plusQuantity: plusQuantity,
-        minusQuantity: minusQuantity
+        minusQuantity: minusQuantity,
+        getCartCount: getCartCount
       };
-    });
 
+    });
 })();

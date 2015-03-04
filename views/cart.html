@@ -1,10 +1,23 @@
-<i class="fa fa-reply" ng-click="cartCtrl.routeTo('/')"></i>
-<ul id="cart">
-  <h1>Shopping Cart</h1>
-  <li class='block' ng-repeat="item in cartCtrl.cart">
-    <span>{{item.name}} | {{item.availability}} | {{item.price}} | Quantity: {{item.quantity}} </span>
-    <i class="fa fa-plus cart" ng-click="cartCtrl.plusQuantity(item)"></i>
-    <i class="fa fa-minus cart" ng-click="cartCtrl.minusQuantity(item)"></i>
-    <i class="fa fa-times cart" ng-click="cartCtrl.deleteFromCart($index)"></i>
-  </li>
-</ul>
+<div ng-controller="MainController as mainCtrl">
+  <i class="fa fa-reply" ng-click="mainCtrl.routeTo('/')"></i>
+  <ul id="cart">
+    <h1>Shopping Cart {{cartCtrl.emptyCartMsg()}}</h1>
+    <hr>
+    <li ng-repeat="item in cartCtrl.cart">
+      <div><b>Product:</b> {{item.name}} <i class="fa fa-times cart" ng-click="cartCtrl.deleteFromCart($index)"></i></div>
+      <div><b>Unit Price:</b> {{item.price | currency}}</div>
+      <div>
+        <b>Qty:</b>
+        {{item.quantity}}
+      </div>
+      <div>
+        <i class="fa fa-plus cart" ng-click="cartCtrl.plusQuantity(item)"></i>
+        <i class="fa fa-minus cart" ng-click="cartCtrl.minusQuantity(item)"></i>
+      </div>
+      <hr>
+    </li>
+    <li id='cartTotal'>
+      <div><b>Total:</b> {{cartCtrl.getCartTotal() | currency}}</div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,14 @@
+<span class="fa fa-shopping-cart" ng-click="mainCtrl.routeTo('/cart')"> {{mainCtrl.cartCount()}}</span>
+<i class="fa fa-plus admin" ng-click="mainCtrl.routeTo('/addNew')"></i>
+<i class="fa fa-pencil-square-o" ng-click="mainCtrl.routeTo('/admin')"></i>
+<ul id='mainUl'>
+  <li class="block" ng-repeat="product in mainCtrl.products">
+    <img src="{{product.image}}" alt="" ng-click="mainCtrl.routeTo('/detail/'+$index)">
+    <form ng-controller="CartController as cartCtrl">
+      <input class='nameInput' type="text" value='{{product.name}}' ng-click="mainCtrl.routeTo('/detail/'+$index)" disabled='disabled'/>
+      <input class='priceInput' type="text" value='{{product.price | currency}}' disabled='disabled'/>
+      <textarea class='descriptionInput' disabled='disabled'>{{product.description}}</textarea>
+      <button ng-click="cartCtrl.addToCart(product)" type="submit" class='addCartButton'>Add to Cart</button>
+    </form>
+  </li>
+</ul>
