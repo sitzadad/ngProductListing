@@ -1,11 +1,25 @@
 <i class="fa fa-reply" ng-click="mainCtrl.routeTo('/')"></i>
-<ul id='mainUl'>
-  <li class="block">
+<section id="detailWrapper">
+  <aside id="detailBlock">
     <img src="{{mainCtrl.selectedProduct.image}}" alt="">
     <form>
       <input class='nameInput' type="text" value='{{mainCtrl.selectedProduct.name}}' disabled='disabled'/>
       <input class='priceInput' type="text" value='{{mainCtrl.selectedProduct.price | currency}}' disabled='disabled'/>
       <textarea class='descriptionInput' disabled='disabled'>{{mainCtrl.selectedProduct.description}}</textarea>
     </form>
-  </li>
-</ul>
+  </aside>
+  <aside id="detailComments">
+    <h1>Product Comments</h1>
+    <ul id="commentsUl">
+      <li ng-repeat="comments in mainCtrl.comments">
+        <span class="commenterRender">{{comments.commenter}}:</span>
+        <span class="commentsRender">{{comments.message}}</span>
+      </li>
+    </ul>
+    <form ng-submit="mainCtrl.postComment(newComment)">
+      <textarea id="commentInput" ng-model="newComment.message" placeholder="Leave a comment..."></textarea>
+      <input id="commenterInput" ng-model="newComment.commenter" type="text" placeholder="Enter a username..."/>
+      <button id="commentButton">Post Comment</button>
+    </form>
+  </aside>
+</section

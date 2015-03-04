@@ -33,7 +33,7 @@
         }
       ];
 
-      var getProducts = function (callback) {
+      var getProducts = function () {
         return $http.get(url);
 
         //ASK CALVIN ABOUT RETURNING PROMISE INSTEAD OF EXPECTED DATA
@@ -146,6 +146,30 @@
         plusQuantity: plusQuantity,
         minusQuantity: minusQuantity,
         getCartCount: getCartCount
+      };
+
+    })
+
+    .factory('CommentsService', function ($location,_,$http) {
+
+      var url = 'http://tiy-fee-rest.herokuapp.com/collections/ngngngComments';
+
+      var getComments = function () {
+        return $http.get(url);
+      };
+
+      var postComment = function (passedComment) {
+        $http.post(url, passedComment).success(function(){
+        })
+        .error(function(){
+          console.log('service/addProduct error');
+        });
+      };
+
+      return {
+        getComments: getComments,
+        postComment: postComment
+
       };
 
     });

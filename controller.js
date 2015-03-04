@@ -1,16 +1,28 @@
 (function () {
   "use strict";
-  angular.module('ngProductListing').controller('MainController', function (ProductsService, CartService, $routeParams, $location) {
+  angular.module('ngProductListing').controller('MainController', function (ProductsService, CartService, CommentsService, $routeParams, $location) {
 
     var mainCtrl = this;
 
     ProductsService.getProducts().success(function(data){
       mainCtrl.products = data.reverse();
-      
+
     })
     .error(function(){
       console.log('mainCtrl.products error')
     });
+
+    CommentsService.getComments().success(function(data){
+      mainCtrl.comments = data;
+    })
+    .error(function(){
+      console.log('mainCtrl.comments error')
+    });
+
+    mainCtrl.postComment = function (newComment) {
+      CommentsService.postComment(newComment);
+      $scope.newComment = {};
+    };
 
     mainCtrl.selectedProduct = ProductsService.getOneProduct($routeParams.productIndex);
 
